@@ -4,7 +4,7 @@ Go Live Security List
 
 ## 1. Protect .htaccess
 
-```htaccess
+```apacheconf
   <files ~ "^.*\.([Hh][Tt][Aa])">
     order allow,deny
     deny from all
@@ -14,7 +14,7 @@ Go Live Security List
 
 ## 2. Protect wp-config.php
 
-```htaccess
+```apacheconf
   <files wp-config.php>
     order allow,deny
     deny from all
@@ -91,6 +91,29 @@ Pointing REST API to 404 page
 # Redirect to a 404.html (you may want to add a 404 header!) 
 RewriteRule ^wp-json.*$ 404.html
 ```
+
+## 9. Disable PHP Execution
+
+In `wp-includes` and `uploads`
+
+```apacheconf
+  <Files *.php>
+    Order Allow, Deny
+    Deny from all
+  </Files>
+```
+
+## 10. Disable XML-RPC
+
+```apacheconf
+  <Files xmlrpc.php>
+    order deny,allow
+    deny from all
+    allow from `ip_address`
+  </Files>
+```
+
+Enable this features if only updating the content using remote access
 
 ## Credits
 
