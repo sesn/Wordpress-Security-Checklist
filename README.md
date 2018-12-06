@@ -115,6 +115,14 @@ In `wp-includes` and `uploads`
 
 Enable this features if only updating the content using remote access
 
+## 11. Redirecting from old url to live one
+
+```apacheconf
+  Redirect 301 /oldpage.html http://www.yourwebsite.com/newpage.html
+  Redirect 301 /oldfolder/page2.html /folder3/page7.html
+  Redirect 301 / http://www.mynewwebsite.com/
+```
+
 ## Credits
 
 - https://www.cloudways.com/blog/protect-wordpress-with-htaccess/
